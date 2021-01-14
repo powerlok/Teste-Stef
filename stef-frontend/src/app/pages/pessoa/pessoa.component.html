@@ -1,0 +1,36 @@
+
+<div class=" content">
+  <div class=" row">
+    <div class="col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Lista de Pessoas</h4>
+        </div>
+        <div class=" card-body">
+          <div class=" table-responsive">
+            <table class=" table tablesorter" id="">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Nome da Pessoa</th>
+                  <th class=" text-center">Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let person of personData">
+                  <td>{{ person.name }}</td>
+                  <td class=" text-center">
+                    <a [routerLink]="['/pessoa-editar', person.businessEntityId]">
+                      <i class=" tim-icons icon-pencil" title="editar"> </i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+           
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

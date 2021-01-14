@@ -1,0 +1,68 @@
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Editar Pessoas</h4>
+        </div>
+        <div class=" card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class=" form-group">
+                <label> Nome pessoa </label>
+                <input class=" form-control" placeholder="nome da pessoa" disabled type="text"
+                  value="{{ personPhone?.name }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=" card">
+        <div class=" card-header">
+          <h4 class=" card-title">Telefone das Pessoas</h4>
+        </div>
+        <div class=" card-body">
+
+          <form [formGroup]="formPerson" novalidate>
+            <table class=" table tablesorter">
+              <thead class=" text-primary">
+                <tr>
+                  <th>Número do Telefone</th>
+                  <th>Categoria do Telefone</th>
+                </tr>
+              </thead>
+              <tbody formArrayName="phones">
+                <tr *ngFor="let a of this.formPerson.get('phones')['controls']; let i= index;">
+                  <td [formGroupName]="i">
+                    <input type="hidden" formControlName="businessEntityID">
+                    <input class="form-control" formControlName="phoneNumber" mask="(00) 00000-0000" type="text"
+                      placeholder="99 99999-9999" />
+                  </td>
+                  <td [formGroupName]="i">
+                    <select class="form-control" formControlName="phoneNumberTypeID">
+                      <option *ngFor="let phoneType of phoneNumberTypeData" [value]=" phoneType.phoneNumberTypeID ">
+                        {{ phoneType.name }}</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <hr>
+            <div class="divider"></div>
+
+            <div class="row">
+              <div class="col-1 text-left">
+                <button type="button" class="btn btn-primary" [routerLink]="['/pessoa']">Voltar</button>
+              </div>
+              <div class="col-2 offset-9 text-right">
+                <button (click)="onSubmit();" class="btn btn-success">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
